@@ -7,7 +7,7 @@ data "aws_availability_zones" "available" {}
 # Define a vpc
 resource "aws_vpc" "test_vpc" {
   cidr_block = "${var.test_network_cidr}"
-  tags {
+  tags = {
     Name = "${var.test_vpc}"
   }
 }
@@ -15,7 +15,7 @@ resource "aws_vpc" "test_vpc" {
 # Internet gateway for the public subnet
 resource "aws_internet_gateway" "test_ig" {
   vpc_id = "${aws_vpc.test_vpc.id}"
-  tags {
+  tags = {
     Name = "test_ig"
   }
 }
@@ -25,7 +25,7 @@ resource "aws_subnet" "test_public_sn_01" {
   vpc_id = "${aws_vpc.test_vpc.id}"
   cidr_block = "${var.test_public_01_cidr}"
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
-  tags {
+  tags = {
     Name = "test_public_sn_01"
   }
 }
@@ -35,7 +35,7 @@ resource "aws_subnet" "test_public_sn_02" {
   vpc_id = "${aws_vpc.test_vpc.id}"
   cidr_block = "${var.test_public_02_cidr}"
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
-  tags {
+  tags = {
     Name = "test_public_sn_02"
   }
 }
@@ -47,7 +47,7 @@ resource "aws_route_table" "test_public_sn_rt_01" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.test_ig.id}"
   }
-  tags {
+  tags = {
     Name = "test_public_sn_rt_01"
   }
 }
@@ -65,7 +65,7 @@ resource "aws_route_table" "test_public_sn_rt_02" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.test_ig.id}"
   }
-  tags {
+  tags = {
     Name = "test_public_sn_rt_02"
   }
 }
@@ -124,7 +124,7 @@ resource "aws_security_group" "test_public_sg" {
       "0.0.0.0/0"]
   }
 
-  tags {
+  tags = {
     Name = "test_public_sg"
   }
 }

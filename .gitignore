@@ -1,0 +1,6 @@
+provision-cluster/terraform.tfstate
+provision-cluster/terraform.tfstate.backup
+provision-cluster/terraform.tfvars
+provision-cluster/.terraform/plugins/darwin_amd64/lock.json
+provision-cluster/.terraform/plugins/darwin_amd64/terraform-provider-aws_v2.70.0_x4
+provision-cluster/terraform.tfvars
